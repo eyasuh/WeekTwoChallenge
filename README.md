@@ -1,4 +1,5 @@
-###Week Two Challenge: Chipotle Jr. Plus+
+#Week Two Challenge: Chipotle Jr. Plus+
+
 Write a program that will allow a robot to assemble 25 burritos. Use a random generator for each burrito option and build a list of 25 burrito customization:
 
 Rice: white, brown, none, all \

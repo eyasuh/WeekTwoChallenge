@@ -76,6 +76,7 @@
  */
 
 import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.Currency;
 import java.util.Random;
 
@@ -98,46 +99,157 @@ public class ChipotleJrPlus {
         String [] salsa = ingredients[3];
         String [] veggies = ingredients[4];
 
+        //for extra challenge
+        ArrayList<String> ingredientList = new ArrayList<String>();
+
+        ArrayList<String> meatList = new ArrayList<String>();
+        ArrayList<String> beansList = new ArrayList<String>();
+        ArrayList<String> salsaList = new ArrayList<String>();
+        ArrayList<String> veggiesList = new ArrayList<String>();
+
 
 
         // make 25 burritos
-
+        double totalPrice = 0;
         for(int i = 1; i <= 25; i++) {
             double price = 3;
-            int ingrdCount = 0;
+            double ingrdCount = 0;
+
             String riceChoice = randomIngredient(rice);
-                if(!riceChoice.equals("no"))
+                if(!riceChoice.equals("no")) {
                     ingrdCount++;
+                    ingredientList.add(riceChoice);
+                }
             String meatChoice = randomIngredient(meat);
-                if(!meatChoice.equals("no"))
+                if(!meatChoice.equals("no")){
                     ingrdCount++;
+                    ingredientList.add(meatChoice);
+                }
             String beansChoice = randomIngredient(beans);
-                if(!beansChoice.equals("no"))
+                if(!beansChoice.equals("no")){
                     ingrdCount++;
+                    ingredientList.add(beansChoice);
+                }
             String salsaChoice = randomIngredient(salsa);
-                if(!salsaChoice.equals("no"))
+                if(!salsaChoice.equals("no")){
                     ingrdCount++;
+                    ingredientList.add(salsaChoice);
+                }
             String veggiesChoice = randomIngredient(veggies);
-                if(!veggiesChoice.equals("no"))
+                if(!veggiesChoice.equals("no")){
                     ingrdCount++;
+                    ingredientList.add(veggiesChoice);
+                }
 
             //booleans
             String chees = randomBool(" , chees");
-                if(chees.equals(" , chees"))
+                if(chees.equals(" , chees")){
                     ingrdCount++;
+                    ingredientList.add(chees);
+                }
             String guac = randomBool(" , Guac");
-                if(guac.equals("Guac"))
+                if(guac.equals(" , Guac")){
                     ingrdCount++;
+                    ingredientList.add(guac);
+                }
             String queso = randomBool(" , Queso");
+                if(queso.equals(" , Queso")){
                     ingrdCount++;
+                    ingredientList.add(queso);
+                }
             String sourCream = randomBool(" , Sour cream");
-                if(sourCream.equals(" , Sour cream"))
+                if(sourCream.equals(" , Sour cream")) {
                     ingrdCount++;
+                    ingredientList.add(sourCream);
+                }
 
             System.out.println("Burrito " + i + " : " + riceChoice + " rice, " +
                     meatChoice + " , " + beansChoice + " beans, " + salsaChoice + " salsa, " +
-                    veggiesChoice + chees + guac + queso + sourCream + "  $" + (price + ingrdCount/2));
+                    veggiesChoice + chees + guac + queso + sourCream + "  $" + (price + ingrdCount/2) + " == " + ingrdCount);
+
+                totalPrice += price + ingrdCount/2;
         }
+
+        //3 challenge
+        int whiteNum = 0;
+        int brownNum = 0;
+        int allNum = 0;
+
+        int chicken = 0, steak = 0, carnidas = 0, chorizo = 0 , sofritas = 0, veggieMeat = 0, allMeat = 0;
+        int pinto = 0, black = 0, allBeans = 0;
+        int mild = 0, medium = 0, hot = 0, allSalsa = 0;
+        int lettuce = 0, fajitaVeggies = 0, allVeggie = 0;
+        for (String str: ingredientList) {
+            switch (str) {
+                case "white":
+                    whiteNum++;
+                    break;
+                case "brown":
+                    brownNum++;
+                    break;
+                case "all":
+                    allNum++;
+                    break;
+                case "checken":
+                    chicken++;
+                    break;
+                case "steak":
+                    steak++;
+                    break;
+                case "carnidas":
+                    carnidas++;
+                    break;
+                case "chorizo":
+                    chorizo++;
+                    break;
+                case "sofritas":
+                    sofritas++;
+                    break;
+                case "veggie meat":
+                    veggieMeat++;
+                    break;
+                case "all meat":
+                    allMeat++;
+                    break;
+                case "pinto":
+                    pinto++;
+                    break;
+                case "black":
+                    black++;
+                    break;
+                case "all beans":
+                    allBeans++;
+                    break;
+                case "mild":
+                    mild++;
+                    break;
+                case "medium":
+                    medium++;
+                    break;
+                case "hot":
+                    hot++;
+                    break;
+                case "all salsa":
+                    allSalsa++;
+                    break;
+                case "lettuce":
+                    lettuce++;
+                    break;
+                case "fajita veggies":
+                    fajitaVeggies++;
+                    break;
+                case "all veggies":
+                    allVeggie++;
+                    break;
+            }
+
+
+        }
+        System.out.println("\nThis order has " + whiteNum + " white rice " + brownNum + " brown rice " + allNum + " both rice " +
+                chicken + " chicken " + steak + " steak " + carnidas + " carnidas " + chorizo +" chorizo " + sofritas +" sofritas " +
+                veggieMeat + " veggieMeat " + allMeat +" allMeat " + pinto + " pinto " + black + " black " + allBeans +" allBeans" +
+                mild + " mild " + medium + " medium " + hot + " hot " + allSalsa + " allSalsa " + lettuce + " lettuce " +
+                fajitaVeggies +" fajitaVeggies " + allVeggie + " allVeggie " + " total price is " + totalPrice);
 
     }
     //method for random generation
